@@ -1,0 +1,19 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: result
+  labels:
+    app: talk-app
+spec:
+  strategy:
+    type: Docker
+  source:
+    type: Git
+    git:
+      uri: "https://github.com/takwa1925/openshift-talk-app.git"
+      ref: master
+    contextDir: talk-app/result
+  output:
+    to:
+      kind: ImageStreamTag
+      name: result:latest
